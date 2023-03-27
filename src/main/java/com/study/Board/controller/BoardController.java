@@ -23,11 +23,6 @@ public class BoardController {
     }
 
 
-    @GetMapping("/board/write")
-    public String boardWriteForm(){
-        return "boardwrite";
-    }
-
     // 데이터를 조작할때 Post 사용
     @PostMapping("/board/writedo")
     public  String boardWritePro(Board board){
@@ -35,6 +30,7 @@ public class BoardController {
         return "boardwrite";
     }
 
+    // 조작이 필요 하지 않을경우 Get 사용
     @GetMapping("/board/list")
     public String boardlist(Model model){ // 데이터를 담아 페이지로 보내기 위해 Model 자료형을 인자로
 //        System.out.println(boardService.boardList());
@@ -46,6 +42,12 @@ public class BoardController {
     public String boardview(Model model,Integer id){
         model.addAttribute("board",boardService.boardview(id));
         return "boardview";
+    }
+
+    @GetMapping("/board/delete")
+    public String boardDelete(Integer id){
+        boardService.boardDelete(id);
+        return  "redirect:/board/list";
     }
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>게시글 리스트 페이지</title>
@@ -10,7 +10,7 @@
         margin : 0 auto;
         margin-top : 40px;
     }
-</style>
+  </style>
 <body>
 <div class="layout">
   <table>
@@ -21,15 +21,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
     <tr th:each="board : ${list}">
       <td th:text="${board.id}">1</td>
-      <td th:text="${board.title}">제목입니다.</td>
-    </tr>
+      <td>
+        <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}">제목입니다.</a>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
-
 </body>
 </html>
